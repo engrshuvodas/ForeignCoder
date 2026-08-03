@@ -1,0 +1,139 @@
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Coming Soon</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3037/3037366.png" type="image/x-icon">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <style>
+      body{
+        width: 100%;
+        height: 100vh;
+        background-color: #222;
+        background-image: url('https://img.freepik.com/free-photo/silver-christmas-deco-baubles-black_1220-3076.jpg?t=st=1737524981~exp=1737528581~hmac=42cd5e20eaf30d42e5e6717f9434abe6b14bc6a6d5caf0dc4600b6dc18287136&w=1060');
+        background-image: url('https://img.freepik.com/free-photo/workplace-business-modern-male-accessories-laptop-black-background_155003-3944.jpg');
+        background-image: url('https://img.freepik.com/premium-photo/black-friday-background-sale-banner-generative-ai_911620-11525.jpg');
+        background-image: url('https://img.freepik.com/premium-photo/black-friday-sale-banner-concept-design-shopping-bag-black-background-with-copy-space-3d-render_46250-3239.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: "Kanit", serif;
+        font-family: "Oswald", serif;
+      }
+      .time-container{
+        display: flex; 
+        justify-content: center;
+        gap: 15px;
+      }
+      .time-box{
+        background-color: #222;
+        width: 100px; 
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+      }
+      .footer-text{
+        color: #999;
+      }
+      .footer-brand{
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      @media screen and (max-width: 600px) {
+        .time-container{
+          gap: 5px;
+        }
+        .time-box{
+          width: 70px; 
+          height: 70px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+    <div class="container">
+      <div class="row text-center justify-content-center">
+        <div class="col-12 display-1 fw-bold">
+          Coming Soon
+        </div>
+        <div class="col-10 fs-5">
+          We are working hard to launch our website. Stay tuned!
+        </div>
+        <div class="col-12 my-5">
+          <div class="time-container">
+
+            <div class="time-box">
+              <div class="fs-4" id="days">00</div>
+              <div>Days</div>
+            </div>
+            <div class="time-box">
+              <div class="fs-4" id="hours">00</div>
+              <div>Hours</div>
+            </div>
+            <div class="time-box">
+              <div class="fs-4" id="minutes">00</div>
+              <div>Minutes</div>
+            </div>
+            <div class="time-box">
+              <div class="fs-4" id="seconds">00</div>
+              <div>Seconds</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-12 footer-text">
+          © 2026 <sapn class="footer-brand">Engr Shuvo</sapn>. All rights reserved.
+        </div>
+      </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+    <script>
+        // Countdown timer logic
+        const initialTime = new Date();
+        const durationMs = 10 * 24 * 60 * 60 * 1000 + 12 * 60 * 60 * 1000 + 30 * 60 * 1000 + 20 * 1000;
+        const targetDate = new Date(initialTime.getTime() + durationMs);
+
+        const countdown = () => {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff < 0) return;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        };
+
+        setInterval(countdown, 1000);
+        countdown(); // Initial call to set values immediately
+    </script>
+  
+  </body>
+</html>
