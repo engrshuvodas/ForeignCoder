@@ -62,8 +62,7 @@ const TEAM_MEMBERS = [
     email: "monamisadhu67@gmail.com",
     github: "https://github.com/monami2005",
     photo: "../img/team/Monami .png",
-    bio: "Producing crystal-clear documentation and polished presentations that bring the team's technical work to life.",
-    photoScale: 1.25
+    bio: "Producing crystal-clear documentation and polished presentations that bring the team's technical work to life."
   }
 ];
 
@@ -164,12 +163,10 @@ function updateSlide(index, animate = true) {
     memberEmail.href           = `mailto:${member.email}`;
     memberGithub.href          = member.github;
 
-    // Set Photo, Custom Scale, & Error Fallback
+    // Set Photo & Error Fallback
     const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=600&background=081C3A&color=10CFC9&bold=true`;
     memberPhoto.src   = member.photo;
     memberPhoto.alt   = member.name;
-    memberPhoto.style.transform = member.photoScale ? `scale(${member.photoScale})` : "scale(1)";
-    memberPhoto.style.transformOrigin = "bottom center";
     memberPhoto.onerror = function() {
       this.src = fallbackUrl;
     };
