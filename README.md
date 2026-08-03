@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./img/logo/foreigncoder-logo.png" alt="ForeignCoder Logo" width="120" />
+  <img src="./img/logo/logo.png" alt="ForeignCoder Logo" width="120" />
   <h1>ForeignCoder</h1>
   <p><b>An international student engineering squad bridging borders through code.</b></p>
 
