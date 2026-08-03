@@ -329,6 +329,38 @@
       background-color: rgba(16, 207, 201, 0.06);
     }
 
+    /* Card metadata: enrollment, division, email */
+    .team-card__meta {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      background-color: var(--surface-alt);
+      border-radius: 10px;
+      border: 1px solid var(--outline-var);
+    }
+    .team-card__meta-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--on-surface-var);
+      line-height: 1.4;
+    }
+    .team-card__meta-row .material-symbols-outlined {
+      font-size: 14px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .team-card__meta-label {
+      font-weight: 600;
+      color: var(--primary-container);
+      min-width: 60px;
+    }
+    .team-card__meta-value { color: var(--text-muted); word-break: break-all; }
+
     /* =============================================
        FOOTER
     ============================================= */
@@ -446,52 +478,126 @@
     <section class="team-section" id="team">
       <div class="team-grid">
 
+        <!-- 1. Shuvo Das — Team Leader -->
         <div class="team-card reveal">
-          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8fCMPG6EhJGCVSGFkXnjp3LjbwCdDd1_drKNR2Z4mDlXAlPr05zDMCgQspPkqm6iURnFx_kNircNEb8apgCFiYuY-scMoTNSxEImcZ3_ceGQUQSHugABSLoLJvGq2cJoXBEGUyb9n1DQhendrZM2HMPPN7jLuKZOGkev3p51E7Pr9g23QQHvHRjszBm36SluhRb_osi_NSva62BclNR3QpA6LkAKpJpaxWOVKzx_lvaSVumb79P-oMg" alt="Arif Hossain"/>
-          <h3 class="team-card__name">Arif Hossain</h3>
-          <span class="team-card__role">Lead Systems Architect</span>
-          <p class="team-card__bio">Specializing in scalable cloud infrastructure and distributed systems. Passionate about clean code and robust architecture.</p>
-          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <img class="team-card__avatar" src="img/team/Shuvo Das.png" alt="Shuvo Das" onerror="this.src='https://ui-avatars.com/api/?name=Shuvo+Das&size=200&background=081c3a&color=10CFC9&bold=true'"/>>
+          <h3 class="team-card__name">Shuvo Das</h3>
+          <span class="team-card__role">Team Leader</span>
+          <p class="team-card__bio">Leading the ForeignCoder squad with a vision for international collaboration and high-impact software delivery.</p>
+          <div class="team-card__meta">
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">badge</span>
+              <span class="team-card__meta-label">Enroll</span>
+              <span class="team-card__meta-value">2403051051377 &bull; Div 5A15</span>
+            </div>
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">mail</span>
+              <span class="team-card__meta-value">engrshuvoda@gmail.com</span>
+            </div>
+          </div>
+          <a href="https://github.com/engrshuvodas" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
         </div>
 
+        <!-- 2. Vitumbiko Ziba — Communications & Presentation -->
         <div class="team-card reveal" style="transition-delay:0.08s">
-          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLelpBVGTI-6SA5bah7mCk_cMW25JBDNkxmbJ6oM8QiSd115htDVszGlbxlRZM0InsZOzQQF25lZuB9rqU81x0YH9nKoPoaiP7-PCz3i7ic1xH7dnfd_bxZNE0BdLkMvSxFM66QUCHlG4s_OmkRYa44udzfl8uKncDwdiNN7dPKK73KrCHed9vnCjUtPOcCTeI19PcpyfGVxj7KoSCVs7nPkPNrcio3QkDqJjPP5V55zzjf0XFVZYfAQ" alt="Kwame Mensah"/>
-          <h3 class="team-card__name">Kwame Mensah</h3>
-          <span class="team-card__role">Frontend Lead</span>
-          <p class="team-card__bio">Crafting pixel-perfect, highly interactive user interfaces. Expert in React ecosystem and modern web performance.</p>
-          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <img class="team-card__avatar" src="img/team/Vitumbiko Ziba.jpeg" alt="Vitumbiko Ziba" onerror="this.src='https://ui-avatars.com/api/?name=Vitumbiko+Ziba&size=200&background=081c3a&color=10CFC9&bold=true'"/>>
+          <h3 class="team-card__name">Vitumbiko Ziba</h3>
+          <span class="team-card__role">Communications & Presentation</span>
+          <p class="team-card__bio">Crafting compelling narratives and presentations that bridge technical complexity with clear, impactful communication.</p>
+          <div class="team-card__meta">
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">badge</span>
+              <span class="team-card__meta-label">Enroll</span>
+              <span class="team-card__meta-value">2403051051378 &bull; Div 5A15</span>
+            </div>
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">mail</span>
+              <span class="team-card__meta-value">vituglory@gmail.com</span>
+            </div>
+          </div>
+          <a href="https://github.com/vituzi" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
         </div>
 
+        <!-- 3. Setu Mondal — Quality Assurance Tester -->
         <div class="team-card reveal" style="transition-delay:0.16s">
-          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBplT_qdiS4-WA2AtzAEroxRj0kcicbY5kxt9keZDKowxEaBetIodfHWuO46Xb2nlvJmOEMHLnHdwNQzv_UO5v-dl3TLki7l4BlBXnXjd-XIp-aK4_WdG1Jr3KDP6gnbDfECh-HhPDYvVAOodbgFeBWxfZgHqHBOZ_cAMQVlY0NRSXbUGyiUNR3-lCnPlXHer5JfZTeL1LyZC_54IipjGZx-YLwwvOQR2iEjKWomGt2yf096xFg-kyQ-w" alt="Priya Patel"/>
-          <h3 class="team-card__name">Priya Patel</h3>
-          <span class="team-card__role">Data Engineer</span>
-          <p class="team-card__bio">Building robust data pipelines and analytics solutions. Focused on optimizing large-scale data processing.</p>
-          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <img class="team-card__avatar" src="img/team/Setu Mondol.jpeg" alt="Setu Mondal" onerror="this.src='https://ui-avatars.com/api/?name=Setu+Mondal&size=200&background=081c3a&color=10CFC9&bold=true'"/>>
+          <h3 class="team-card__name">Setu Mondal</h3>
+          <span class="team-card__role">Quality Assurance Tester</span>
+          <p class="team-card__bio">Ensuring every feature ships with confidence through rigorous testing strategies and a zero-defect mindset.</p>
+          <div class="team-card__meta">
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">badge</span>
+              <span class="team-card__meta-label">Enroll</span>
+              <span class="team-card__meta-value">2403051051376 &bull; Div 5A15</span>
+            </div>
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">mail</span>
+              <span class="team-card__meta-value">setumondal32@gmail.com</span>
+            </div>
+          </div>
+          <a href="https://github.com/setucloud" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
         </div>
 
+        <!-- 4. Bipu Roy — Strategy & Ideation -->
         <div class="team-card reveal" style="transition-delay:0.04s">
-          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEyIQEHntfN6f-0jM67cU1IScthqzb29YGQEkJMkBH89qi-9d17Q31NQFPUMrvrvjYt3E7rXsvVyeJuKXTA-TVNr7BZh3DCPpYLwZZne5OkNHgXDtqkM4NqCNquXFQVbhJDY2ratWSoUY3tSO7MJXiCs_3qvrP1URNFIl9-MPEXR5GGqI4NpKWrlwrbWMTK0WYF7xvr9sUEjJdlq6SHTR_LL4KhBozUJYWwerM3nj80LRxpiLwLnKZaA" alt="David Osei"/>
-          <h3 class="team-card__name">David Osei</h3>
-          <span class="team-card__role">Full Stack Developer</span>
-          <p class="team-card__bio">Bridging the gap between robust backend APIs and responsive frontend applications with Node.js and Vue.</p>
-          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <img class="team-card__avatar" src="img/team/bipu.jpeg" alt="Bipu Roy" onerror="this.src='https://ui-avatars.com/api/?name=Bipu+Roy&size=200&background=081c3a&color=10CFC9&bold=true'"/>>
+          <h3 class="team-card__name">Bipu Roy</h3>
+          <span class="team-card__role">Strategy & Ideation</span>
+          <p class="team-card__bio">Driving the product vision with creative problem-solving, competitive analysis, and out-of-the-box strategic thinking.</p>
+          <div class="team-card__meta">
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">badge</span>
+              <span class="team-card__meta-label">Enroll</span>
+              <span class="team-card__meta-value">2403051051363 &bull; Div 5A13</span>
+            </div>
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">mail</span>
+              <span class="team-card__meta-value">bipur8910@gmail.com</span>
+            </div>
+          </div>
+          <span class="team-card__github" style="opacity:0.4;cursor:default">
+            <span class="material-symbols-outlined">code</span>No GitHub
+          </span>
         </div>
 
+        <!-- 5. Sajib Biswas — UI/UX Designer -->
         <div class="team-card reveal" style="transition-delay:0.12s">
-          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6seMqnrBxIhTGVerztIJmrnm0KV1-2GqHLblYu4vtWB-pBizplHLk-Pj8a7a-8LbaOnW_IJ6fCc5HkoCADJGLJsI_OznaVIeLtTcujDS9vb6qb8LovYG6dSv75cMjXL7pUSMo_SPSsCDJQIExTlocz9Bj9xhM9xzNjat6RMZONK7d36Y1txVud61POdFB4sOr1SEdkyKemIC05NFe5w_jEXyEnhsGpbUWuFQ9qcLUXKSZ0pTJODZE0g" alt="Ananya Sharma"/>
-          <h3 class="team-card__name">Ananya Sharma</h3>
-          <span class="team-card__role">UX/UI Designer</span>
-          <p class="team-card__bio">Translating complex technical requirements into intuitive, accessible, and beautiful user experiences.</p>
-          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <img class="team-card__avatar" src="img/team/Sajib biswas.png" alt="Sajib Biswas" onerror="this.src='https://ui-avatars.com/api/?name=Sajib+Biswas&size=200&background=081c3a&color=10CFC9&bold=true'"/>>
+          <h3 class="team-card__name">Sajib Biswas</h3>
+          <span class="team-card__role">UI/UX Designer</span>
+          <p class="team-card__bio">Translating complex requirements into intuitive, pixel-perfect interfaces that delight users and drive engagement.</p>
+          <div class="team-card__meta">
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">badge</span>
+              <span class="team-card__meta-label">Enroll</span>
+              <span class="team-card__meta-value">2403051240220 &bull; Div 5B3</span>
+            </div>
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">mail</span>
+              <span class="team-card__meta-value">bsajib116@gmail.com</span>
+            </div>
+          </div>
+          <a href="https://github.com/mrsajib07" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
         </div>
 
+        <!-- 6. Monami Sadhu — Documentation & Presentation -->
         <div class="team-card reveal" style="transition-delay:0.2s">
-          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDgelou-DsvJ_Cmr2nL7dRyJ6D9h2jIDgLoniM6JFsygoZDapHPDbLLTt-xCEdLdFuiMPOlLR_tWru2b0ZAClGfEZwkkparJ091lgg8I7ELs-M7tyaRZt-l0ppojf_dlOqGVz86i0dOA9hYILocXELG1C67jMNAm2Q3WrA_2ZM426KZ2U4geFy7mGuZMrS5PqXDLLCQP0-6XK72rT6TaHuNyvuNMMOn99T0FJuQHrQmncm5L3vB3T1uw" alt="Farhan Rahman"/>
-          <h3 class="team-card__name">Farhan Rahman</h3>
-          <span class="team-card__role">DevOps Specialist</span>
-          <p class="team-card__bio">Ensuring smooth CI/CD pipelines, automating infrastructure, and keeping the systems highly available and secure.</p>
-          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <img class="team-card__avatar" src="img/team/Monami .png" alt="Monami Sadhu" onerror="this.src='https://ui-avatars.com/api/?name=Monami+Sadhu&size=200&background=081c3a&color=10CFC9&bold=true'"/>>
+          <h3 class="team-card__name">Monami Sadhu</h3>
+          <span class="team-card__role">Documentation & Presentation</span>
+          <p class="team-card__bio">Producing crystal-clear documentation and polished presentations that bring the team's technical work to life.</p>
+          <div class="team-card__meta">
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">badge</span>
+              <span class="team-card__meta-label">Enroll</span>
+              <span class="team-card__meta-value">2403051051375 &bull; Div 5A15</span>
+            </div>
+            <div class="team-card__meta-row">
+              <span class="material-symbols-outlined">mail</span>
+              <span class="team-card__meta-value">monamisadhu67@gmail.com</span>
+            </div>
+          </div>
+          <a href="https://github.com/monami2005" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
         </div>
 
       </div>
