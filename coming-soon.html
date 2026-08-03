@@ -6,6 +6,9 @@
   <title>ForeignCoder — Something Big Is Coming</title>
   <meta name="description" content="ForeignCoder is an international student engineering squad. Our projects are coming soon — stay tuned!"/>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./img/logo/foreigncoder-logo.png"/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -121,6 +124,13 @@
     }
     @media (min-width: 480px) { .topbar__brand { font-size: 18px; gap: 10px; } }
     @media (min-width: 768px) { .topbar__brand { font-size: 20px; gap: 10px; } }
+
+    .topbar__logo-img {
+      height: 36px;
+      width: auto;
+      border-radius: 6px;
+    }
+    @media (min-width: 480px) { .topbar__logo-img { height: 40px; } }
 
     .topbar__back {
       display: inline-flex;
@@ -511,7 +521,7 @@
     <!-- TOPBAR -->
     <header class="topbar">
       <div class="topbar__brand">
-        <span class="material-symbols-outlined" style="font-size:26px;color:#10CFC9">code</span>
+        <img class="topbar__logo-img" src="./img/logo/foreigncoder-logo.png" alt="ForeignCoder Logo"/>
         ForeignCoder
       </div>
       <a href="index.html" class="topbar__back">
