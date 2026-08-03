@@ -276,4 +276,26 @@ function setupEventListeners() {
       }
     }
   });
+
+  // Mobile Touch Swipe Navigation (Native swipe gesture support)
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const slideArea = document.querySelector(".showcase-container");
+  if (slideArea) {
+    slideArea.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slideArea.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeThreshold = 45; // Min horizontal distance in px
+      if (touchEndX < touchStartX - swipeThreshold) {
+        nextSlide();
+        resetAutoSlide();
+      } else if (touchEndX > touchStartX + swipeThreshold) {
+        prevSlide();
+        resetAutoSlide();
+      }
+    }, { passive: true });
+  }
 }

@@ -169,6 +169,7 @@ body::before {
 @media (max-width: 640px) {
   .breadcrumb { display: none; }
   .btn-text { display: none; }
+  .hide-mobile { display: none; }
 }
 
 /* ==========================================================================
@@ -735,7 +736,7 @@ body::before {
   .nav-arrow {
     width: 38px;
     height: 38px;
-    top: 180px;
+    top: 155px;
   }
   .nav-arrow--left { left: 4px; }
   .nav-arrow--right { right: 4px; }
@@ -748,7 +749,7 @@ body::before {
     height: 180px;
   }
   .member-name {
-    font-size: 32px;
+    font-size: 30px;
   }
   .member-role {
     font-size: 16px;
@@ -756,6 +757,31 @@ body::before {
   .member-bio {
     font-size: 14px;
     line-height: 1.6;
+  }
+  .member-details {
+    padding: 12px;
+    gap: 10px;
+  }
+  .detail-row {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+  .detail-value,
+  .detail-link {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    font-size: 13px;
+  }
+  .member-actions {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .btn-action {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
   }
   .thumbnail-bar {
     padding: 12px 10px 16px;
@@ -796,12 +822,12 @@ body::before {
     height: 150px;
   }
   .member-name {
-    font-size: 26px;
+    font-size: 24px;
   }
   .nav-arrow {
     width: 34px;
     height: 34px;
-    top: 155px;
+    top: 135px;
   }
   .thumb-item {
     min-width: 70px;
