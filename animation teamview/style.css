@@ -613,3 +613,210 @@ body::before {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
+
+/* ==========================================================================
+   ADVANCED ALL-SCREEN RESPONSIVE SYSTEM (DESKTOP, TABLET, MOBILE, MINI-MOBILE)
+   ========================================================================== */
+
+/* 1. Large Table / Standard Laptop (768px to 1024px) */
+@media (max-width: 1024px) {
+  .showcase-container {
+    padding: 30px 40px 200px;
+  }
+  .slide-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  .slide-info {
+    order: 2;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .slide-visual {
+    order: 1;
+    margin: 0 auto;
+  }
+  .photo-container {
+    height: 380px;
+    max-width: 360px;
+  }
+  .member-details {
+    justify-content: center;
+  }
+  .member-actions {
+    justify-content: center;
+  }
+  .nav-arrow {
+    top: 250px;
+  }
+}
+
+/* 2. Mobile Landscape & Medium Mobile (480px to 768px) */
+@media (max-width: 768px) {
+  .top-header {
+    padding: 10px 16px;
+  }
+  .brand-logo {
+    height: 32px;
+  }
+  .brand-name {
+    font-size: 17px;
+  }
+  .showcase-container {
+    padding: 20px 20px 180px;
+  }
+  .nav-arrow {
+    width: 44px;
+    height: 44px;
+    top: 210px;
+  }
+  .nav-arrow--left { left: 8px; }
+  .nav-arrow--right { right: 8px; }
+  .photo-container {
+    height: 300px;
+    max-width: 280px;
+  }
+  .photo-container::before {
+    width: 220px;
+    height: 220px;
+  }
+  .member-name {
+    font-size: 38px;
+  }
+  .member-role {
+    font-size: 18px;
+  }
+  .member-bio {
+    font-size: 15px;
+    max-width: 100%;
+  }
+  .member-details {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    padding: 16px;
+  }
+  .thumbnail-bar {
+    padding: 16px 16px 20px;
+  }
+  .thumbnail-list {
+    gap: 12px;
+  }
+  .thumb-item {
+    min-width: 90px;
+    padding: 8px 10px;
+  }
+  .thumb-avatar {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* 3. Small Mobile Phones (<= 480px - iPhone 14/15, SE, Android) */
+@media (max-width: 480px) {
+  .top-header {
+    padding: 10px 12px;
+  }
+  .brand-name {
+    font-size: 15px;
+  }
+  .btn-back {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  .btn-control {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  .showcase-container {
+    padding: 12px 12px 160px;
+  }
+  .nav-arrow {
+    width: 38px;
+    height: 38px;
+    top: 180px;
+  }
+  .nav-arrow--left { left: 4px; }
+  .nav-arrow--right { right: 4px; }
+  .photo-container {
+    height: 250px;
+    max-width: 230px;
+  }
+  .photo-container::before {
+    width: 180px;
+    height: 180px;
+  }
+  .member-name {
+    font-size: 32px;
+  }
+  .member-role {
+    font-size: 16px;
+  }
+  .member-bio {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .thumbnail-bar {
+    padding: 12px 10px 16px;
+  }
+  .thumbnail-list {
+    gap: 8px;
+    justify-content: flex-start;
+  }
+  .thumb-item {
+    min-width: 76px;
+    padding: 6px 6px;
+  }
+  .thumb-avatar {
+    width: 44px;
+    height: 44px;
+    border-width: 2px;
+  }
+  .thumb-name {
+    font-size: 11px;
+  }
+  .thumb-role {
+    font-size: 9px;
+    max-width: 72px;
+  }
+}
+
+/* 4. Ultra-Small Screens (<= 360px - Galaxy S SE, Fold screens) */
+@media (max-width: 360px) {
+  .showcase-container {
+    padding: 10px 8px 150px;
+  }
+  .photo-container {
+    height: 210px;
+    max-width: 190px;
+  }
+  .photo-container::before {
+    width: 150px;
+    height: 150px;
+  }
+  .member-name {
+    font-size: 26px;
+  }
+  .nav-arrow {
+    width: 34px;
+    height: 34px;
+    top: 155px;
+  }
+  .thumb-item {
+    min-width: 70px;
+  }
+  .thumb-avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Hide webkit scrollbar on thumbnails for native swipe experience */
+.thumbnail-list::-webkit-scrollbar {
+  display: none;
+}
+.thumbnail-list {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
