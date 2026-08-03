@@ -255,22 +255,37 @@
     @media (min-width: 1280px) { .team-grid { gap: 32px; } }
 
     /* =============================================
-       TEAM CARD
+       TEAM CARD — PREMIUM REDESIGN
     ============================================= */
     .team-card {
-      background-color: var(--surface);
-      border-radius: 16px;
-      padding: 20px 16px 18px;
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
       text-align: center;
-      box-shadow: var(--shadow-card);
-      transition: transform 300ms ease, box-shadow 300ms ease;
+      box-shadow: 0 2px 8px rgba(8,28,58,0.06), 0 1px 3px rgba(8,28,58,0.04);
+      transition: transform 320ms cubic-bezier(.22,1,.36,1), box-shadow 320ms ease;
       position: relative;
+      overflow: hidden;
     }
-    @media (min-width: 480px) { .team-card { padding: 24px 20px 20px; border-radius: 18px; } }
-    @media (min-width: 768px) { .team-card { padding: 28px 24px 24px; border-radius: 20px; } }
+    /* Teal accent top bar */
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #06b6d4);
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+    .team-card:hover::before { opacity: 1; }
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(8,28,58,0.12), 0 6px 12px rgba(8,28,58,0.07);
+    }
+    /* Outer border glow on hover */
     .team-card::after {
       content: '';
       position: absolute;
@@ -280,123 +295,200 @@
       transition: border-color 300ms ease;
       pointer-events: none;
     }
-    .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-card-hover);
-    }
-    .team-card:hover::after {
-      border-color: rgba(16, 207, 201, 0.25);
+    .team-card:hover::after { border-color: rgba(16,207,201,0.2); }
+
+    /* ---- Card top: avatar area ---- */
+    .team-card__top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 20px 16px;
+      background: linear-gradient(160deg, #f8fafc 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--surface-highest);
     }
 
+    /* Avatar with teal ring */
+    .team-card__avatar-wrap {
+      position: relative;
+      margin-bottom: 14px;
+    }
+    .team-card__avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #06b6d4, transparent 60%);
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+    .team-card:hover .team-card__avatar-wrap::before { opacity: 1; }
+
     .team-card__avatar {
-      width: 80px;
-      height: 80px;
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 14px;
-      border: 2.5px solid var(--surface-alt);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 300ms ease, box-shadow 300ms ease;
+      border: 3px solid var(--surface);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      transition: transform 300ms ease;
+      position: relative;
+      z-index: 1;
+      display: block;
     }
-    @media (min-width: 480px) { .team-card__avatar { width: 88px; height: 88px; } }
-    @media (min-width: 768px) { .team-card__avatar { width: 96px; height: 96px; margin-bottom: 16px; } }
-    .team-card:hover .team-card__avatar {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+    @media (min-width: 480px) { .team-card__avatar { width: 96px; height: 96px; } }
+    @media (min-width: 768px) { .team-card__avatar { width: 104px; height: 104px; } }
+    .team-card:hover .team-card__avatar { transform: scale(1.04); }
 
     .team-card__name {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(17px, 2.5vw, 22px);
-      font-weight: 600;
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 700;
       color: var(--primary-container);
       margin-bottom: 4px;
-      line-height: 1.3;
+      line-height: 1.25;
+    }
+
+    /* Role + location row */
+    .team-card__role-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
     }
     .team-card__role {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 16px;
     }
-    .team-card__bio {
-      font-size: 15px;
-      line-height: 24px;
-      color: var(--text-muted);
-      flex-grow: 1;
-      margin-bottom: 20px;
-    }
-    .team-card__github {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: var(--on-surface-var);
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: color 200ms ease, background-color 200ms ease;
-      margin-top: auto;
-    }
-    .team-card__github .material-symbols-outlined { font-size: 18px; }
-    .team-card__github:hover {
-      color: var(--accent);
-      background-color: rgba(16, 207, 201, 0.06);
-    }
-
-    /* Card metadata: enrollment, division, email */
-    .team-card__meta {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-bottom: 16px;
-      padding: 10px 12px;
-      background-color: var(--surface-alt);
-      border-radius: 10px;
-      border: 1px solid var(--outline-var);
-    }
-    .team-card__meta-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--on-surface-var);
-      line-height: 1.4;
-    }
-    .team-card__meta-row .material-symbols-outlined {
-      font-size: 14px;
-      color: var(--accent);
+    /* Dot separator */
+    .team-card__role-sep {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--outline-var);
       flex-shrink: 0;
     }
-    .team-card__meta-label {
-      font-weight: 600;
-      color: var(--primary-container);
-      min-width: 60px;
-    }
-    .team-card__meta-value { color: var(--text-muted); word-break: break-all; min-width: 0; }
-
-    /* Country / location pill */
+    /* Country chip inline with role */
     .team-card__country {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 3px 10px;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 8px;
       border-radius: 100px;
-      background-color: rgba(8,28,58,0.07);
+      background: rgba(8,28,58,0.07);
       color: var(--primary-container);
-      margin-top: 2px;
-      letter-spacing: 0.01em;
     }
     .team-card__country--africa {
-      background-color: rgba(16,207,201,0.10);
+      background: rgba(16,207,201,0.12);
       color: #007b76;
     }
+
+    .team-card__bio {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ---- Card bottom: info block ---- */
+    .team-card__info {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0 20px 18px;
+      flex: 1;
+    }
+
+    .team-card__info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--surface-highest);
+      text-align: left;
+    }
+    .team-card__info-item:last-child { border-bottom: none; }
+
+    .team-card__info-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(16,207,201,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .team-card__info-icon .material-symbols-outlined {
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    .team-card__info-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .team-card__info-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--on-surface-var);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .team-card__info-value {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-main);
+      word-break: break-all;
+      line-height: 1.4;
+    }
+
+    /* GitHub button — full width outlined */
+    .team-card__github {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--primary-container);
+      padding: 9px 16px;
+      margin: 0 20px 20px;
+      border-radius: 10px;
+      border: 1.5px solid var(--outline-var);
+      background: transparent;
+      transition: color 200ms ease, border-color 200ms ease, background 200ms ease, transform 150ms ease;
+    }
+    .team-card__github .material-symbols-outlined { font-size: 16px; }
+    .team-card__github:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(16,207,201,0.06);
+      transform: scale(1.02);
+    }
+    .team-card__github--disabled {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* Keep old meta classes harmless (no longer used in HTML) */
+    .team-card__meta,
+    .team-card__meta-row,
+    .team-card__meta-label,
+    .team-card__meta-value { display: none; }
 
     /* =============================================
        RESPONSIVE — MOBILE MENU FONT
@@ -495,7 +587,12 @@
 
       </nav>
 
-      <button class="btn-contact">Contact Us</button>
+      <a
+        href="https://wa.me/919641700503?text=Hello%2C%20I%20hope%20you%27re%20doing%20well.%20I%20would%20like%20to%20learn%20more%20about%20your%20project%20and%20your%20team.%20I%20found%20your%20contact%20information%20through%20the%20ForeignCoder%20website%20and%20would%20appreciate%20the%20opportunity%20to%20connect.%20Thank%20you."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-contact"
+      >Contact Us</a>
 
       <button class="topbar__menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
         <span class="material-symbols-outlined" id="menu-icon">menu</span>
@@ -510,7 +607,12 @@
       <a href="#team" class="mobile-nav-link active">Team<span class="material-symbols-outlined">arrow_forward</span></a>
     </nav>
     <div class="mobile-menu__footer">
-      <button class="btn-contact-mobile">Contact Us</button>
+      <a
+        href="https://wa.me/919641700503?text=Hello%2C%20I%20hope%20you%27re%20doing%20well.%20I%20would%20like%20to%20learn%20more%20about%20your%20project%20and%20your%20team.%20I%20found%20your%20contact%20information%20through%20the%20ForeignCoder%20website%20and%20would%20appreciate%20the%20opportunity%20to%20connect.%20Thank%20you."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-contact-mobile"
+      >Contact Us</a>
     </div>
   </div>
 
@@ -531,153 +633,217 @@
 
         <!-- 1. Shuvo Das — Team Leader -->
         <div class="team-card reveal">
-          <img class="team-card__avatar" src="img/team/Shuvo Das.png" alt="Shuvo Das" onerror="this.src='https://ui-avatars.com/api/?name=Shuvo+Das&size=200&background=081c3a&color=10CFC9&bold=true'"/>
-          <h3 class="team-card__name">Shuvo Das</h3>
-          <span class="team-card__role">Team Leader</span>
-          <p class="team-card__bio">Leading the ForeignCoder squad with a vision for international collaboration and high-impact software delivery.</p>
-          <div class="team-card__meta">
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">badge</span>
-              <span class="team-card__meta-label">Enroll</span>
-              <span class="team-card__meta-value">2403051051377 &bull; Div 5A15</span>
+          <div class="team-card__top">
+            <div class="team-card__avatar-wrap">
+              <img class="team-card__avatar" src="img/team/Shuvo Das.png" alt="Shuvo Das" onerror="this.src='https://ui-avatars.com/api/?name=Shuvo+Das&size=200&background=081c3a&color=10CFC9&bold=true'"/>
             </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">mail</span>
-              <span class="team-card__meta-value">engrshuvoda@gmail.com</span>
-            </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">location_on</span>
+            <h3 class="team-card__name">Shuvo Das</h3>
+            <div class="team-card__role-row">
+              <span class="team-card__role">Team Leader</span>
+              <span class="team-card__role-sep"></span>
               <span class="team-card__country">Bangladesh</span>
             </div>
+            <p class="team-card__bio">Leading the ForeignCoder squad with a vision for international collaboration and high-impact software delivery.</p>
           </div>
-          <a href="https://github.com/engrshuvodas" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <div class="team-card__info">
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">badge</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Enrollment</span>
+                <span class="team-card__info-value">2403051051377 &bull; Div 5A15</span>
+              </div>
+            </div>
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">mail</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Email</span>
+                <span class="team-card__info-value">engrshuvoda@gmail.com</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://github.com/engrshuvodas" target="_blank" rel="noopener" class="team-card__github">
+            <span class="material-symbols-outlined">code</span> View GitHub
+          </a>
         </div>
 
         <!-- 2. Vitumbiko Ziba — Communications & Presentation -->
         <div class="team-card reveal" style="transition-delay:0.08s">
-          <img class="team-card__avatar" src="img/team/Vitumbiko Ziba.jpeg" alt="Vitumbiko Ziba" onerror="this.src='https://ui-avatars.com/api/?name=Vitumbiko+Ziba&size=200&background=081c3a&color=10CFC9&bold=true'"/>
-          <h3 class="team-card__name">Vitumbiko Ziba</h3>
-          <span class="team-card__role">Communications & Presentation</span>
-          <p class="team-card__bio">Crafting compelling narratives and presentations that bridge technical complexity with clear, impactful communication.</p>
-          <div class="team-card__meta">
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">badge</span>
-              <span class="team-card__meta-label">Enroll</span>
-              <span class="team-card__meta-value">2403051051378 &bull; Div 5A15</span>
+          <div class="team-card__top">
+            <div class="team-card__avatar-wrap">
+              <img class="team-card__avatar" src="img/team/Vitumbiko Ziba.jpeg" alt="Vitumbiko Ziba" onerror="this.src='https://ui-avatars.com/api/?name=Vitumbiko+Ziba&size=200&background=081c3a&color=10CFC9&bold=true'"/>
             </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">mail</span>
-              <span class="team-card__meta-value">vituglory@gmail.com</span>
-            </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">location_on</span>
+            <h3 class="team-card__name">Vitumbiko Ziba</h3>
+            <div class="team-card__role-row">
+              <span class="team-card__role">Communications &amp; Presentation</span>
+              <span class="team-card__role-sep"></span>
               <span class="team-card__country team-card__country--africa">Africa</span>
             </div>
+            <p class="team-card__bio">Crafting compelling narratives and presentations that bridge technical complexity with clear, impactful communication.</p>
           </div>
-          <a href="https://github.com/vituzi" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <div class="team-card__info">
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">badge</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Enrollment</span>
+                <span class="team-card__info-value">2403051051378 &bull; Div 5A15</span>
+              </div>
+            </div>
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">mail</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Email</span>
+                <span class="team-card__info-value">vituglory@gmail.com</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://github.com/vituzi" target="_blank" rel="noopener" class="team-card__github">
+            <span class="material-symbols-outlined">code</span> View GitHub
+          </a>
         </div>
 
         <!-- 3. Bipu Roy — Strategy & Ideation -->
         <div class="team-card reveal" style="transition-delay:0.04s">
-          <img class="team-card__avatar" src="img/team/bipu.jpeg" alt="Bipu Roy" onerror="this.src='https://ui-avatars.com/api/?name=Bipu+Roy&size=200&background=081c3a&color=10CFC9&bold=true'"/>
-          <h3 class="team-card__name">Bipu Roy</h3>
-          <span class="team-card__role">Strategy & Ideation</span>
-          <p class="team-card__bio">Driving the product vision with creative problem-solving, competitive analysis, and out-of-the-box strategic thinking.</p>
-          <div class="team-card__meta">
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">badge</span>
-              <span class="team-card__meta-label">Enroll</span>
-              <span class="team-card__meta-value">2403051051363 &bull; Div 5A13</span>
+          <div class="team-card__top">
+            <div class="team-card__avatar-wrap">
+              <img class="team-card__avatar" src="img/team/bipu.jpeg" alt="Bipu Roy" onerror="this.src='https://ui-avatars.com/api/?name=Bipu+Roy&size=200&background=081c3a&color=10CFC9&bold=true'"/>
             </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">mail</span>
-              <span class="team-card__meta-value">bipur8910@gmail.com</span>
-            </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">location_on</span>
+            <h3 class="team-card__name">Bipu Roy</h3>
+            <div class="team-card__role-row">
+              <span class="team-card__role">Strategy &amp; Ideation</span>
+              <span class="team-card__role-sep"></span>
               <span class="team-card__country">Bangladesh</span>
             </div>
+            <p class="team-card__bio">Driving the product vision with creative problem-solving, competitive analysis, and out-of-the-box strategic thinking.</p>
           </div>
-          <span class="team-card__github" style="opacity:0.4;cursor:default">
-            <span class="material-symbols-outlined">code</span>No GitHub
+          <div class="team-card__info">
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">badge</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Enrollment</span>
+                <span class="team-card__info-value">2403051051363 &bull; Div 5A13</span>
+              </div>
+            </div>
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">mail</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Email</span>
+                <span class="team-card__info-value">bipur8910@gmail.com</span>
+              </div>
+            </div>
+          </div>
+          <span class="team-card__github team-card__github--disabled">
+            <span class="material-symbols-outlined">code</span> No GitHub
           </span>
         </div>
 
         <!-- 4. Setu Mondal — Quality Assurance Tester -->
         <div class="team-card reveal" style="transition-delay:0.16s">
-          <img class="team-card__avatar" src="img/team/Setu Mondol.jpeg" alt="Setu Mondal" onerror="this.src='https://ui-avatars.com/api/?name=Setu+Mondal&size=200&background=081c3a&color=10CFC9&bold=true'"/>
-          <h3 class="team-card__name">Setu Mondal</h3>
-          <span class="team-card__role">Quality Assurance Tester</span>
-          <p class="team-card__bio">Ensuring every feature ships with confidence through rigorous testing strategies and a zero-defect mindset.</p>
-          <div class="team-card__meta">
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">badge</span>
-              <span class="team-card__meta-label">Enroll</span>
-              <span class="team-card__meta-value">2403051051376 &bull; Div 5A15</span>
+          <div class="team-card__top">
+            <div class="team-card__avatar-wrap">
+              <img class="team-card__avatar" src="img/team/Setu Mondol.jpeg" alt="Setu Mondal" onerror="this.src='https://ui-avatars.com/api/?name=Setu+Mondal&size=200&background=081c3a&color=10CFC9&bold=true'"/>
             </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">mail</span>
-              <span class="team-card__meta-value">setumondal32@gmail.com</span>
-            </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">location_on</span>
+            <h3 class="team-card__name">Setu Mondal</h3>
+            <div class="team-card__role-row">
+              <span class="team-card__role">Quality Assurance</span>
+              <span class="team-card__role-sep"></span>
               <span class="team-card__country">Bangladesh</span>
             </div>
+            <p class="team-card__bio">Ensuring every feature ships with confidence through rigorous testing strategies and a zero-defect mindset.</p>
           </div>
-          <a href="https://github.com/setucloud" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <div class="team-card__info">
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">badge</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Enrollment</span>
+                <span class="team-card__info-value">2403051051376 &bull; Div 5A15</span>
+              </div>
+            </div>
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">mail</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Email</span>
+                <span class="team-card__info-value">setumondal32@gmail.com</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://github.com/setucloud" target="_blank" rel="noopener" class="team-card__github">
+            <span class="material-symbols-outlined">code</span> View GitHub
+          </a>
         </div>
-
 
         <!-- 5. Sajib Biswas — UI/UX Designer -->
         <div class="team-card reveal" style="transition-delay:0.12s">
-          <img class="team-card__avatar" src="img/team/Sajib biswas.png" alt="Sajib Biswas" onerror="this.src='https://ui-avatars.com/api/?name=Sajib+Biswas&size=200&background=081c3a&color=10CFC9&bold=true'"/>
-          <h3 class="team-card__name">Sajib Biswas</h3>
-          <span class="team-card__role">UI/UX Designer</span>
-          <p class="team-card__bio">Translating complex requirements into intuitive, pixel-perfect interfaces that delight users and drive engagement.</p>
-          <div class="team-card__meta">
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">badge</span>
-              <span class="team-card__meta-label">Enroll</span>
-              <span class="team-card__meta-value">2403051240220 &bull; Div 5B3</span>
+          <div class="team-card__top">
+            <div class="team-card__avatar-wrap">
+              <img class="team-card__avatar" src="img/team/Sajib biswas.png" alt="Sajib Biswas" onerror="this.src='https://ui-avatars.com/api/?name=Sajib+Biswas&size=200&background=081c3a&color=10CFC9&bold=true'"/>
             </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">mail</span>
-              <span class="team-card__meta-value">bsajib116@gmail.com</span>
-            </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">location_on</span>
+            <h3 class="team-card__name">Sajib Biswas</h3>
+            <div class="team-card__role-row">
+              <span class="team-card__role">UI/UX Designer</span>
+              <span class="team-card__role-sep"></span>
               <span class="team-card__country">Bangladesh</span>
             </div>
+            <p class="team-card__bio">Translating complex requirements into intuitive, pixel-perfect interfaces that delight users and drive engagement.</p>
           </div>
-          <a href="https://github.com/mrsajib07" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <div class="team-card__info">
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">badge</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Enrollment</span>
+                <span class="team-card__info-value">2403051240220 &bull; Div 5B3</span>
+              </div>
+            </div>
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">mail</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Email</span>
+                <span class="team-card__info-value">bsajib116@gmail.com</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://github.com/mrsajib07" target="_blank" rel="noopener" class="team-card__github">
+            <span class="material-symbols-outlined">code</span> View GitHub
+          </a>
         </div>
 
         <!-- 6. Monami Sadhu — Documentation & Presentation -->
         <div class="team-card reveal" style="transition-delay:0.2s">
-          <img class="team-card__avatar" src="img/team/Monami .png" alt="Monami Sadhu" onerror="this.src='https://ui-avatars.com/api/?name=Monami+Sadhu&size=200&background=081c3a&color=10CFC9&bold=true'"/>
-          <h3 class="team-card__name">Monami Sadhu</h3>
-          <span class="team-card__role">Documentation & Presentation</span>
-          <p class="team-card__bio">Producing crystal-clear documentation and polished presentations that bring the team's technical work to life.</p>
-          <div class="team-card__meta">
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">badge</span>
-              <span class="team-card__meta-label">Enroll</span>
-              <span class="team-card__meta-value">2403051051375 &bull; Div 5A15</span>
+          <div class="team-card__top">
+            <div class="team-card__avatar-wrap">
+              <img class="team-card__avatar" src="img/team/Monami .png" alt="Monami Sadhu" onerror="this.src='https://ui-avatars.com/api/?name=Monami+Sadhu&size=200&background=081c3a&color=10CFC9&bold=true'"/>
             </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">mail</span>
-              <span class="team-card__meta-value">monamisadhu67@gmail.com</span>
-            </div>
-            <div class="team-card__meta-row">
-              <span class="material-symbols-outlined">location_on</span>
+            <h3 class="team-card__name">Monami Sadhu</h3>
+            <div class="team-card__role-row">
+              <span class="team-card__role">Documentation &amp; Presentation</span>
+              <span class="team-card__role-sep"></span>
               <span class="team-card__country">Bangladesh</span>
             </div>
+            <p class="team-card__bio">Producing crystal-clear documentation and polished presentations that bring the team's technical work to life.</p>
           </div>
-          <a href="https://github.com/monami2005" target="_blank" rel="noopener" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+          <div class="team-card__info">
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">badge</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Enrollment</span>
+                <span class="team-card__info-value">2403051051375 &bull; Div 5A15</span>
+              </div>
+            </div>
+            <div class="team-card__info-item">
+              <div class="team-card__info-icon"><span class="material-symbols-outlined">mail</span></div>
+              <div class="team-card__info-text">
+                <span class="team-card__info-label">Email</span>
+                <span class="team-card__info-value">monamisadhu67@gmail.com</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://github.com/monami2005" target="_blank" rel="noopener" class="team-card__github">
+            <span class="material-symbols-outlined">code</span> View GitHub
+          </a>
         </div>
 
       </div>
     </section>
+
 
   </main>
 
