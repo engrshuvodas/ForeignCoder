@@ -75,9 +75,12 @@
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 16px;
       height: 64px;
     }
+    @media (min-width: 480px)  { .topbar__inner { padding: 0 20px; } }
+    @media (min-width: 768px)  { .topbar__inner { padding: 0 24px; } }
+    @media (min-width: 1200px) { .topbar__inner { padding: 0 32px; } }
 
     /* Brand */
     .topbar__brand {
@@ -86,17 +89,19 @@
       gap: 12px;
     }
     .topbar__logo-img {
-      height: 40px;
+      height: 36px;
       width: auto;
       border-radius: 6px;
     }
+    @media (min-width: 480px) { .topbar__logo-img { height: 40px; } }
     .topbar__name {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--primary);
       letter-spacing: -0.01em;
     }
+    @media (min-width: 480px) { .topbar__name { font-size: 22px; } }
 
     /* Desktop nav */
     .topbar__nav {
@@ -207,20 +212,24 @@
     ============================================= */
     .team-hero {
       text-align: center;
-      padding: 80px 16px 48px;
+      padding: 48px 16px 32px;
     }
+    @media (min-width: 480px)  { .team-hero { padding: 60px 20px 40px; } }
+    @media (min-width: 768px)  { .team-hero { padding: 80px 24px 48px; } }
+    @media (min-width: 1024px) { .team-hero { padding: 96px 32px 56px; } }
     .team-hero__title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(36px, 6vw, 56px);
+      font-size: clamp(28px, 6vw, 56px);
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.1;
       color: var(--primary-container);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
+    @media (min-width: 768px) { .team-hero__title { margin-bottom: 20px; } }
     .team-hero__subtitle {
-      font-size: 18px;
-      line-height: 28px;
+      font-size: clamp(15px, 2.5vw, 18px);
+      line-height: 1.65;
       color: var(--text-muted);
       max-width: 600px;
       margin: 0 auto;
@@ -229,24 +238,29 @@
     /* =============================================
        TEAM GRID
     ============================================= */
-    .team-section { padding: 0 16px 80px; }
+    .team-section { padding: 0 12px 60px; }
+    @media (min-width: 480px)  { .team-section { padding: 0 16px 70px; } }
+    @media (min-width: 768px)  { .team-section { padding: 0 24px 80px; } }
+    @media (min-width: 1200px) { .team-section { padding: 0 32px 96px; } }
     .team-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 28px;
+      gap: 16px;
       max-width: 1200px;
       margin: 0 auto;
     }
-    @media (min-width: 640px)  { .team-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1024px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 480px)  { .team-grid { gap: 20px; } }
+    @media (min-width: 640px)  { .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+    @media (min-width: 1024px) { .team-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+    @media (min-width: 1280px) { .team-grid { gap: 32px; } }
 
     /* =============================================
        TEAM CARD
     ============================================= */
     .team-card {
       background-color: var(--surface);
-      border-radius: 20px;
-      padding: 28px 24px 24px;
+      border-radius: 16px;
+      padding: 20px 16px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -255,6 +269,8 @@
       transition: transform 300ms ease, box-shadow 300ms ease;
       position: relative;
     }
+    @media (min-width: 480px) { .team-card { padding: 24px 20px 20px; border-radius: 18px; } }
+    @media (min-width: 768px) { .team-card { padding: 28px 24px 24px; border-radius: 20px; } }
     .team-card::after {
       content: '';
       position: absolute;
@@ -273,15 +289,17 @@
     }
 
     .team-card__avatar {
-      width: 96px;
-      height: 96px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       border: 2.5px solid var(--surface-alt);
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 300ms ease, box-shadow 300ms ease;
     }
+    @media (min-width: 480px) { .team-card__avatar { width: 88px; height: 88px; } }
+    @media (min-width: 768px) { .team-card__avatar { width: 96px; height: 96px; margin-bottom: 16px; } }
     .team-card:hover .team-card__avatar {
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
@@ -289,7 +307,7 @@
 
     .team-card__name {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 22px;
+      font-size: clamp(17px, 2.5vw, 22px);
       font-weight: 600;
       color: var(--primary-container);
       margin-bottom: 4px;
@@ -359,7 +377,15 @@
       color: var(--primary-container);
       min-width: 60px;
     }
-    .team-card__meta-value { color: var(--text-muted); word-break: break-all; }
+    .team-card__meta-value { color: var(--text-muted); word-break: break-all; min-width: 0; }
+
+    /* =============================================
+       RESPONSIVE — MOBILE MENU FONT
+    ============================================= */
+    @media (max-width: 360px) {
+      .mobile-nav-link { font-size: 18px; }
+      .mobile-menu { padding: 72px 16px 24px; }
+    }
 
     /* =============================================
        FOOTER
@@ -372,31 +398,39 @@
     .footer__inner {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      padding: 32px 24px;
+      gap: 16px;
+      padding: 24px 16px;
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
     }
+    @media (min-width: 480px) { .footer__inner { padding: 28px 20px; gap: 18px; } }
     @media (min-width: 768px) {
       .footer__inner {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        padding: 32px 24px;
+        gap: 20px;
       }
     }
+    @media (min-width: 1200px) { .footer__inner { padding: 32px 32px; } }
     .footer__brand {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--primary);
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
-    .footer__copy { font-size: 14px; color: var(--on-surface); line-height: 1.5; }
-    .footer__nav  { display: flex; flex-wrap: wrap; gap: 24px; }
+    @media (min-width: 768px) { .footer__brand { font-size: 20px; margin-bottom: 6px; } }
+    .footer__copy { font-size: 13px; color: var(--on-surface); line-height: 1.5; }
+    @media (min-width: 768px) { .footer__copy { font-size: 14px; } }
+    .footer__nav  { display: flex; flex-wrap: wrap; gap: 16px; }
+    @media (min-width: 480px) { .footer__nav { gap: 20px; } }
+    @media (min-width: 768px) { .footer__nav { gap: 24px; } }
     .footer__link {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.01em;
       color: var(--on-surface-var);
@@ -404,6 +438,7 @@
       border-radius: 4px;
       padding: 2px 0;
     }
+    @media (min-width: 768px) { .footer__link { font-size: 14px; } }
     .footer__link:hover { color: var(--secondary); }
     .footer__link:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -438,8 +473,7 @@
       <nav class="topbar__nav" aria-label="Main navigation">
         <a href="./coming-soon.html" class="nav-link">Projects</a>
         <a href="#team" class="nav-link nav-link--active">Team</a>
-        <!-- <a href="#" class="nav-link">Stack</a> -->
-        <!-- <a href="#" class="nav-link">Timeline</a> -->
+
       </nav>
 
       <button class="btn-contact">Contact Us</button>
@@ -453,10 +487,8 @@
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
     <nav class="mobile-menu__nav">
-      <a href="#" class="mobile-nav-link">Projects<span class="material-symbols-outlined">arrow_forward</span></a>
+      <a href="./coming-soon.html" class="mobile-nav-link">Projects<span class="material-symbols-outlined">arrow_forward</span></a>
       <a href="#team" class="mobile-nav-link active">Team<span class="material-symbols-outlined">arrow_forward</span></a>
-      <a href="#" class="mobile-nav-link">Stack<span class="material-symbols-outlined">arrow_forward</span></a>
-      <a href="#" class="mobile-nav-link">Timeline<span class="material-symbols-outlined">arrow_forward</span></a>
     </nav>
     <div class="mobile-menu__footer">
       <button class="btn-contact-mobile">Contact Us</button>
