@@ -76,6 +76,10 @@
 ForeignCoder/
 ├── index.html               # Main squad showcase & team directory page
 ├── coming-soon.html         # Projects preview page with countdown timer & email capture
+├── animation teamview/      # Interactive Amber Aviation-inspired team showcase (1.5s auto-slide)
+│   ├── index.html           # Animated slide presentation view
+│   ├── style.css            # Frosted glass bottom bar & responsive layout styling
+│   └── script.js            # Automatic 1.5-second slide timer & real project data
 ├── css/
 │   └── main.css             # Global design tokens, resets, and utility classes
 ├── img/

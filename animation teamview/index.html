@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ForeignCoder — Management & Team Showcase</title>
+  <meta name="description" content="ForeignCoder Team Member Showcase — Interactive Animated Presentation Slide" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../img/logo/foreigncoder-logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Minimal Header / Breadcrumb -->
+  <header class="top-header">
+    <a href="../index.html" class="brand-link">
+      <img src="../img/logo/foreigncoder-logo.png" alt="ForeignCoder Logo" class="brand-logo" />
+      <span class="brand-name">FOREIGNCODER</span>
+    </a>
+    <div class="breadcrumb">
+      <span class="material-symbols-outlined icon-home">home</span>
+      <span class="sep">/</span>
+      <span class="current">Team Member View</span>
+    </div>
+    <div class="header-controls">
+      <button id="toggle-play" class="btn-control" title="Pause / Play Slide">
+        <span class="material-symbols-outlined" id="play-icon">pause</span>
+        <span class="btn-text">Auto-Slide</span>
+      </button>
+      <a href="../index.html" class="btn-back">
+        <span class="material-symbols-outlined">arrow_back</span>
+        Back to Main Website
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Showcase Container -->
+  <main class="showcase-container">
+
+    <!-- Left Arrow -->
+    <button class="nav-arrow nav-arrow--left" id="btn-prev" aria-label="Previous Team Member">
+      <span class="material-symbols-outlined">arrow_back</span>
+    </button>
+
+    <!-- Right Arrow -->
+    <button class="nav-arrow nav-arrow--right" id="btn-next" aria-label="Next Team Member">
+      <span class="material-symbols-outlined">arrow_forward</span>
+    </button>
+
+    <!-- Slide Content Box -->
+    <div class="slide-content">
+      
+      <!-- Left Column: Information & Bio -->
+      <div class="slide-info">
+        <div class="member-header">
+          <h1 id="member-name" class="member-name">Shuvo Das</h1>
+          <h2 id="member-role" class="member-role">Team Leader</h2>
+        </div>
+
+        <p id="member-bio" class="member-bio">
+          Leading the ForeignCoder squad with a vision for international collaboration and high-impact software delivery.
+        </p>
+
+        <!-- Detailed Metadata Section -->
+        <div class="member-details">
+          <div class="detail-row">
+            <span class="detail-label"><span class="material-symbols-outlined">badge</span> Enrollment</span>
+            <span id="member-enroll" class="detail-value">2403051051377 • Div 5A15</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label"><span class="material-symbols-outlined">location_on</span> Location</span>
+            <span id="member-location" class="detail-value detail-value--chip">Bangladesh</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label"><span class="material-symbols-outlined">mail</span> Email</span>
+            <a id="member-email" href="mailto:engrshuvoda@gmail.com" class="detail-link">engrshuvoda@gmail.com</a>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="member-actions">
+          <a id="member-github" href="https://github.com/engrshuvodas" target="_blank" rel="noopener" class="btn-action btn-github">
+            <span class="material-symbols-outlined">code</span> GitHub
+          </a>
+          <a id="member-contact" href="https://wa.me/919641700503" target="_blank" rel="noopener" class="btn-action btn-whatsapp">
+            <span class="material-symbols-outlined">chat</span> WhatsApp Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Member Photo Display -->
+      <div class="slide-visual">
+        <div class="photo-container">
+          <img id="member-photo" src="../img/team/Shuvo Das.png" alt="Shuvo Das" class="member-photo" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Thumbnail Navigation Bar -->
+    <footer class="thumbnail-bar">
+      <div class="thumbnail-list" id="thumbnail-list">
+        <!-- JS dynamically populates the 6 member thumbnails here -->
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
