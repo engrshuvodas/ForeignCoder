@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>ForeignCoder - Team</title>
+  <meta name="description" content="An international squad of 6 engineers bridging borders through code. Collaborating across Bangladesh, Africa, and India to deliver technical excellence."/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #191c1e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+    img  { display: block; max-width: 100%; }
+    a    { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; font-family: inherit; }
+    main { flex: 1; }
+
+    /* =============================================
+       CSS VARIABLES
+    ============================================= */
+    :root {
+      --primary:              #000208;
+      --primary-container:    #081c3a;
+      --on-primary-container: #7485a8;
+      --secondary:            #465e8e;
+      --accent:               #10CFC9;
+      --surface:              #ffffff;
+      --surface-alt:          #f1f5f9;
+      --surface-container:    #eceef0;
+      --surface-high:         #e6e8ea;
+      --surface-highest:      #e0e3e5;
+      --on-surface:           #191c1e;
+      --on-surface-var:       #44474e;
+      --outline:              #75777e;
+      --outline-var:          #c5c6ce;
+      --text-main:            #0F172A;
+      --text-muted:           #475569;
+      --shadow-card:          0 4px 6px -1px rgba(8,28,58,0.05), 0 2px 4px -2px rgba(8,28,58,0.05);
+      --shadow-card-hover:    0 12px 24px -4px rgba(8,28,58,0.12), 0 4px 8px -2px rgba(8,28,58,0.08);
+    }
+
+    /* =============================================
+       TOPBAR
+    ============================================= */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--surface);
+      border-bottom: 1px solid var(--outline-var);
+      box-shadow: 0 2px 4px rgba(8,28,58,0.04);
+      width: 100%;
+    }
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+    }
+
+    /* Brand */
+    .topbar__brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar__logo-img {
+      height: 40px;
+      width: auto;
+      border-radius: 6px;
+    }
+    .topbar__name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+    }
+
+    /* Desktop nav */
+    .topbar__nav {
+      display: none;
+      gap: 32px;
+    }
+    .nav-link {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--on-surface-var);
+      transition: color 200ms ease;
+      padding: 4px 0;
+    }
+    .nav-link:hover { color: var(--primary-container); }
+    .nav-link--active {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 4px;
+      opacity: 0.85;
+    }
+
+    /* CTA button */
+    .btn-contact {
+      background-color: var(--primary-container);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 8px 24px;
+      border-radius: 4px;
+      transition: background-color 200ms ease, transform 150ms ease;
+      display: none;
+    }
+    .btn-contact:hover  { background-color: #081C3A; }
+    .btn-contact:active { transform: scale(0.97); }
+
+    /* Mobile menu toggle */
+    .topbar__menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--primary);
+      padding: 8px;
+      border-radius: 6px;
+    }
+    .topbar__menu-btn .material-symbols-outlined { font-size: 28px; }
+
+    @media (min-width: 768px) {
+      .topbar__nav      { display: flex; }
+      .btn-contact      { display: block; }
+      .topbar__menu-btn { display: none; }
+    }
+
+    /* =============================================
+       MOBILE MENU OVERLAY
+    ============================================= */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--surface);
+      z-index: 40;
+      display: none;
+      flex-direction: column;
+      padding: 80px 24px 32px;
+    }
+    .mobile-menu.is-open { display: flex; }
+    .mobile-menu__nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 16px;
+    }
+    .mobile-nav-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--on-surface-var);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--outline-var);
+      transition: color 200ms ease;
+    }
+    .mobile-nav-link:hover    { color: var(--primary-container); }
+    .mobile-nav-link.active   {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      border-bottom-width: 2px;
+    }
+    .mobile-menu__footer { margin-top: auto; padding-bottom: 16px; }
+    .btn-contact-mobile {
+      width: 100%;
+      background-color: var(--primary-container);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 4px;
+      transition: background-color 200ms ease;
+    }
+    .btn-contact-mobile:hover { background-color: #081C3A; }
+
+    /* =============================================
+       HERO / INTRO
+    ============================================= */
+    .team-hero {
+      text-align: center;
+      padding: 80px 16px 48px;
+    }
+    .team-hero__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--primary-container);
+      margin-bottom: 20px;
+    }
+    .team-hero__subtitle {
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* =============================================
+       TEAM GRID
+    ============================================= */
+    .team-section { padding: 0 16px 80px; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px)  { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* =============================================
+       TEAM CARD
+    ============================================= */
+    .team-card {
+      background-color: var(--surface);
+      border-radius: 20px;
+      padding: 28px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform 300ms ease, box-shadow 300ms ease;
+      position: relative;
+    }
+    .team-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      border: 1.5px solid transparent;
+      transition: border-color 300ms ease;
+      pointer-events: none;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .team-card:hover::after {
+      border-color: rgba(16, 207, 201, 0.25);
+    }
+
+    .team-card__avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 2.5px solid var(--surface-alt);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 300ms ease, box-shadow 300ms ease;
+    }
+    .team-card:hover .team-card__avatar {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .team-card__name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--primary-container);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .team-card__role {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .team-card__bio {
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--text-muted);
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+    .team-card__github {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--on-surface-var);
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 200ms ease, background-color 200ms ease;
+      margin-top: auto;
+    }
+    .team-card__github .material-symbols-outlined { font-size: 18px; }
+    .team-card__github:hover {
+      color: var(--accent);
+      background-color: rgba(16, 207, 201, 0.06);
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .footer {
+      background-color: var(--surface-container);
+      border-top: 1px solid var(--outline-var);
+      margin-top: auto;
+    }
+    .footer__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 32px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    @media (min-width: 768px) {
+      .footer__inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    .footer__brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .footer__copy { font-size: 14px; color: var(--on-surface); line-height: 1.5; }
+    .footer__nav  { display: flex; flex-wrap: wrap; gap: 24px; }
+    .footer__link {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--on-surface-var);
+      transition: color 200ms ease;
+      border-radius: 4px;
+      padding: 2px 0;
+    }
+    .footer__link:hover { color: var(--secondary); }
+    .footer__link:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* =============================================
+       SCROLL ANIMATION
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="topbar__brand">
+        <img
+          class="topbar__logo-img"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFdUODszIc40C7vy_2L92SmSflcv0vV1UP3qMBcrGN1hjnzF-8x9CtakWsZDfyGk6_bjkYwtBOQ4AZl5LAC7aZd8-HiA3bLbboCJpbbVH_BBrV0Oqi-Ol7igMpnRGiEVRJlQd9Hf_btry6PHCcGpTXcg5izG02Ep_-2CQroFNR6mOZsaX364to_ZdtZ1gZM0nsGFUnfkq8WVJ6dUU_V0833m3-YejQ47huEqQ1d4KsDuIcvUFXn_TmjiwRR6cDLqK8adY"
+          alt="ForeignCoder Logo"
+        />
+        <span class="topbar__name">ForeignCoder</span>
+      </div>
+
+      <nav class="topbar__nav" aria-label="Main navigation">
+        <a href="#" class="nav-link">Projects</a>
+        <a href="#team" class="nav-link nav-link--active">Team</a>
+        <a href="#" class="nav-link">Stack</a>
+        <a href="#" class="nav-link">Timeline</a>
+      </nav>
+
+      <button class="btn-contact">Contact Us</button>
+
+      <button class="topbar__menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span class="material-symbols-outlined" id="menu-icon">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <nav class="mobile-menu__nav">
+      <a href="#" class="mobile-nav-link">Projects<span class="material-symbols-outlined">arrow_forward</span></a>
+      <a href="#team" class="mobile-nav-link active">Team<span class="material-symbols-outlined">arrow_forward</span></a>
+      <a href="#" class="mobile-nav-link">Stack<span class="material-symbols-outlined">arrow_forward</span></a>
+      <a href="#" class="mobile-nav-link">Timeline<span class="material-symbols-outlined">arrow_forward</span></a>
+    </nav>
+    <div class="mobile-menu__footer">
+      <button class="btn-contact-mobile">Contact Us</button>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- Hero -->
+    <section class="team-hero">
+      <h1 class="team-hero__title reveal">Meet the Squad</h1>
+      <p class="team-hero__subtitle reveal" style="transition-delay:0.1s">
+        An international squad of 6 engineers bridging borders through code. Collaborating across Bangladesh, Africa, and India to deliver technical excellence.
+      </p>
+    </section>
+
+    <!-- Team Grid -->
+    <section class="team-section" id="team">
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8fCMPG6EhJGCVSGFkXnjp3LjbwCdDd1_drKNR2Z4mDlXAlPr05zDMCgQspPkqm6iURnFx_kNircNEb8apgCFiYuY-scMoTNSxEImcZ3_ceGQUQSHugABSLoLJvGq2cJoXBEGUyb9n1DQhendrZM2HMPPN7jLuKZOGkev3p51E7Pr9g23QQHvHRjszBm36SluhRb_osi_NSva62BclNR3QpA6LkAKpJpaxWOVKzx_lvaSVumb79P-oMg" alt="Arif Hossain"/>
+          <h3 class="team-card__name">Arif Hossain</h3>
+          <span class="team-card__role">Lead Systems Architect</span>
+          <p class="team-card__bio">Specializing in scalable cloud infrastructure and distributed systems. Passionate about clean code and robust architecture.</p>
+          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+        </div>
+
+        <div class="team-card reveal" style="transition-delay:0.08s">
+          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLelpBVGTI-6SA5bah7mCk_cMW25JBDNkxmbJ6oM8QiSd115htDVszGlbxlRZM0InsZOzQQF25lZuB9rqU81x0YH9nKoPoaiP7-PCz3i7ic1xH7dnfd_bxZNE0BdLkMvSxFM66QUCHlG4s_OmkRYa44udzfl8uKncDwdiNN7dPKK73KrCHed9vnCjUtPOcCTeI19PcpyfGVxj7KoSCVs7nPkPNrcio3QkDqJjPP5V55zzjf0XFVZYfAQ" alt="Kwame Mensah"/>
+          <h3 class="team-card__name">Kwame Mensah</h3>
+          <span class="team-card__role">Frontend Lead</span>
+          <p class="team-card__bio">Crafting pixel-perfect, highly interactive user interfaces. Expert in React ecosystem and modern web performance.</p>
+          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+        </div>
+
+        <div class="team-card reveal" style="transition-delay:0.16s">
+          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBplT_qdiS4-WA2AtzAEroxRj0kcicbY5kxt9keZDKowxEaBetIodfHWuO46Xb2nlvJmOEMHLnHdwNQzv_UO5v-dl3TLki7l4BlBXnXjd-XIp-aK4_WdG1Jr3KDP6gnbDfECh-HhPDYvVAOodbgFeBWxfZgHqHBOZ_cAMQVlY0NRSXbUGyiUNR3-lCnPlXHer5JfZTeL1LyZC_54IipjGZx-YLwwvOQR2iEjKWomGt2yf096xFg-kyQ-w" alt="Priya Patel"/>
+          <h3 class="team-card__name">Priya Patel</h3>
+          <span class="team-card__role">Data Engineer</span>
+          <p class="team-card__bio">Building robust data pipelines and analytics solutions. Focused on optimizing large-scale data processing.</p>
+          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+        </div>
+
+        <div class="team-card reveal" style="transition-delay:0.04s">
+          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEyIQEHntfN6f-0jM67cU1IScthqzb29YGQEkJMkBH89qi-9d17Q31NQFPUMrvrvjYt3E7rXsvVyeJuKXTA-TVNr7BZh3DCPpYLwZZne5OkNHgXDtqkM4NqCNquXFQVbhJDY2ratWSoUY3tSO7MJXiCs_3qvrP1URNFIl9-MPEXR5GGqI4NpKWrlwrbWMTK0WYF7xvr9sUEjJdlq6SHTR_LL4KhBozUJYWwerM3nj80LRxpiLwLnKZaA" alt="David Osei"/>
+          <h3 class="team-card__name">David Osei</h3>
+          <span class="team-card__role">Full Stack Developer</span>
+          <p class="team-card__bio">Bridging the gap between robust backend APIs and responsive frontend applications with Node.js and Vue.</p>
+          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+        </div>
+
+        <div class="team-card reveal" style="transition-delay:0.12s">
+          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6seMqnrBxIhTGVerztIJmrnm0KV1-2GqHLblYu4vtWB-pBizplHLk-Pj8a7a-8LbaOnW_IJ6fCc5HkoCADJGLJsI_OznaVIeLtTcujDS9vb6qb8LovYG6dSv75cMjXL7pUSMo_SPSsCDJQIExTlocz9Bj9xhM9xzNjat6RMZONK7d36Y1txVud61POdFB4sOr1SEdkyKemIC05NFe5w_jEXyEnhsGpbUWuFQ9qcLUXKSZ0pTJODZE0g" alt="Ananya Sharma"/>
+          <h3 class="team-card__name">Ananya Sharma</h3>
+          <span class="team-card__role">UX/UI Designer</span>
+          <p class="team-card__bio">Translating complex technical requirements into intuitive, accessible, and beautiful user experiences.</p>
+          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+        </div>
+
+        <div class="team-card reveal" style="transition-delay:0.2s">
+          <img class="team-card__avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDgelou-DsvJ_Cmr2nL7dRyJ6D9h2jIDgLoniM6JFsygoZDapHPDbLLTt-xCEdLdFuiMPOlLR_tWru2b0ZAClGfEZwkkparJ091lgg8I7ELs-M7tyaRZt-l0ppojf_dlOqGVz86i0dOA9hYILocXELG1C67jMNAm2Q3WrA_2ZM426KZ2U4geFy7mGuZMrS5PqXDLLCQP0-6XK72rT6TaHuNyvuNMMOn99T0FJuQHrQmncm5L3vB3T1uw" alt="Farhan Rahman"/>
+          <h3 class="team-card__name">Farhan Rahman</h3>
+          <span class="team-card__role">DevOps Specialist</span>
+          <p class="team-card__bio">Ensuring smooth CI/CD pipelines, automating infrastructure, and keeping the systems highly available and secure.</p>
+          <a href="#" class="team-card__github"><span class="material-symbols-outlined">code</span>GitHub</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <span class="footer__brand">ForeignCoder</span>
+        <p class="footer__copy">© 2024 Global Hackathon. Built by ForeignCoder.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#" class="footer__link">Documentation</a>
+        <a href="#" class="footer__link">GitHub</a>
+        <a href="#" class="footer__link">Privacy Policy</a>
+        <a href="#" class="footer__link">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* ---- Mobile Menu ---- */
+    const menuBtn    = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon   = document.getElementById('menu-icon');
+
+    function openMenu() {
+      mobileMenu.classList.add('is-open');
+      menuIcon.textContent = 'close';
+      document.body.style.overflow = 'hidden';
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      menuIcon.textContent = 'menu';
+      document.body.style.overflow = '';
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    /* ---- Scroll-reveal ---- */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
